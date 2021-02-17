@@ -52,13 +52,13 @@ export const deleteReview = async (articleId, reviewId) => {
   }
 };
 
-export const addClap = async (articleId, user) => {
+export const addClap = async (articleId, user, token) => {
   try {
     let response = await fetch(
       `http://localhost:4000/articles/${articleId}/clap`,
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Authorization: token },
         body: JSON.stringify(user),
       }
     );
@@ -73,13 +73,13 @@ export const addClap = async (articleId, user) => {
   }
 };
 
-export const removeClap = async (articleId, user) => {
+export const removeClap = async (articleId, user, token) => {
   try {
     let response = await fetch(
       `http://localhost:4000/articles/${articleId}/removeClap`,
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Authorization: token },
         body: JSON.stringify(user),
       }
     );

@@ -76,18 +76,30 @@ export default function Reactions(props) {
   };
 
   const handleClap = async () => {
-    if (clap === "") {
-      setLoading(true);
-      setClap("blue");
-      console.log(clap);
-      await addClap(props.articleId, user);
-      setLoading(false);
+    if (localStorage.getItem("bearer_token")) {
+      if (clap === "") {
+        setLoading(true);
+        setClap("blue");
+        console.log(clap);
+        await addClap(
+          props.articleId,
+          user,
+          localStorage.getItem("bearer_token")
+        );
+        setLoading(false);
+      } else {
+        setLoading(true);
+        setClap("");
+        console.log(clap);
+        await removeClap(
+          props.articleId,
+          user,
+          localStorage.getItem("bearer_token")
+        );
+        setLoading(false);
+      }
     } else {
-      setLoading(true);
-      setClap("");
-      console.log(clap);
-      await removeClap(props.articleId, user);
-      setLoading(false);
+      alert("login to clap");
     }
   };
   return (
