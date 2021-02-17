@@ -7,8 +7,8 @@ export default function Register() {
   const [user, setUser] = useState({
     email: "",
     password: "",
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
   });
   const [alert, setAlert] = useState({ message: "", color: "" });
   const [show, setShow] = useState(false);
@@ -30,6 +30,7 @@ export default function Register() {
       history.push("/login");
     } else {
       let { error } = await response.json();
+      console.log(error);
       setShow(true);
       setAlert({ message: error, color: "danger" });
     }
@@ -51,7 +52,7 @@ export default function Register() {
             <Form.Label>First Name</Form.Label>
             <Form.Control
               onChange={(e) => handleFormChange(e)}
-              id="firstname"
+              id="firstName"
               type="text"
               placeholder="Enter first name"
             />
@@ -61,7 +62,7 @@ export default function Register() {
             <Form.Label>Last Name</Form.Label>
             <Form.Control
               onChange={(e) => handleFormChange(e)}
-              id="lastname"
+              id="lastName"
               type="text"
               placeholder="Enter last name"
             />

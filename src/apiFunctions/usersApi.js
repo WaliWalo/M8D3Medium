@@ -20,6 +20,7 @@ export const register = async (user) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     });
+    console.log(response);
     return response;
   } catch (error) {
     return error;
